@@ -38,25 +38,25 @@ class SemverTests: QuickSpec {
             }
             
             describe("等価性比較を行うテスト") {
-                context("等しい場合") {
+                it("等しい場合") {
                     let lhs = Semver(major: 1, minor: 2, patch: 3)
                     let rhs = Semver(major: 1, minor: 2, patch: 3)
                     expect(lhs == rhs).to(equal(true))
                 }
                 
-                context("majorが等しくない場合") {
+                it("majorが等しくない場合") {
                     let lhs = Semver(major: 1, minor: 2, patch: 3)
                     let rhs = Semver(major: 0, minor: 2, patch: 3)
                     expect(lhs != rhs).to(equal(true))
                 }
                 
-                context("minorが等しくない場合") {
+                it("minorが等しくない場合") {
                     let lhs = Semver(major: 1, minor: 2, patch: 3)
                     let rhs = Semver(major: 1, minor: 0, patch: 3)
                     expect(lhs != rhs).to(equal(true))
                 }
 
-                context("patchが等しくない場合") {
+                it("patchが等しくない場合") {
                     let lhs = Semver(major: 1, minor: 2, patch: 3)
                     let rhs = Semver(major: 1, minor: 2, patch: 0)
                     expect(lhs != rhs).to(equal(true))
@@ -107,7 +107,9 @@ class SemverTests: QuickSpec {
                 context("等しい場合") {
                     let lhs = Semver(major: 1, minor: 2, patch: 3)
                     let rhs = Semver(major: 1, minor: 2, patch: 3)
-                    expect(lhs > rhs).to(equal(false))
+                    it("falseを返す") {
+                        expect(lhs > rhs).to(equal(false))
+                    }
                 }
             }
             
@@ -154,7 +156,9 @@ class SemverTests: QuickSpec {
                 context("等しい場合") {
                     let lhs = Semver(major: 1, minor: 2, patch: 3)
                     let rhs = Semver(major: 1, minor: 2, patch: 3)
-                    expect(lhs < rhs).to(equal(false))
+                    it("falseを返す") {
+                        expect(lhs < rhs).to(equal(false))
+                    }
                 }
             }
         }
