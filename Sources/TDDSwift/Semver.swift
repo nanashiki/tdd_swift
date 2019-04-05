@@ -16,12 +16,6 @@ struct Semver: Equatable {
     let minor: UInt
     let patch: UInt
     
-    init(major: UInt, minor: UInt, patch: UInt) {
-        self.major = major
-        self.minor = minor
-        self.patch = patch
-    }
-    
     var stringLiteral: String {
         return "\(major).\(minor).\(patch)"
     }
