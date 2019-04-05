@@ -1,0 +1,3 @@
+import TDDSwift
+
+FizzBuzz().run()
