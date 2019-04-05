@@ -37,31 +37,72 @@ class SemverTests: QuickSpec {
                 }
             }
             
-            describe("等価性比較を行うテスト") {
-                it("等しい場合") {
-                    let lhs = Semver(major: 1, minor: 2, patch: 3)
-                    let rhs = Semver(major: 1, minor: 2, patch: 3)
-                    expect(lhs == rhs).to(equal(true))
+            describe("等価演算子のテスト") {
+                context("等しい場合") {
+                    it("trueを返す") {
+                        let lhs = Semver(major: 1, minor: 2, patch: 3)
+                        let rhs = Semver(major: 1, minor: 2, patch: 3)
+                        expect(lhs == rhs).to(equal(true))
+                    }
                 }
                 
-                it("majorが等しくない場合") {
-                    let lhs = Semver(major: 1, minor: 2, patch: 3)
-                    let rhs = Semver(major: 0, minor: 2, patch: 3)
-                    expect(lhs != rhs).to(equal(true))
+                context("major等しくない場合") {
+                    it("falseを返す") {
+                        let lhs = Semver(major: 1, minor: 2, patch: 3)
+                        let rhs = Semver(major: 0, minor: 2, patch: 3)
+                        expect(lhs == rhs).to(equal(false))
+                    }
                 }
                 
-                it("minorが等しくない場合") {
-                    let lhs = Semver(major: 1, minor: 2, patch: 3)
-                    let rhs = Semver(major: 1, minor: 0, patch: 3)
-                    expect(lhs != rhs).to(equal(true))
+                context("minor等しくない場合") {
+                    it("falseを返す") {
+                        let lhs = Semver(major: 1, minor: 2, patch: 3)
+                        let rhs = Semver(major: 1, minor: 0, patch: 3)
+                        expect(lhs == rhs).to(equal(false))
+                    }
                 }
-
-                it("patchが等しくない場合") {
-                    let lhs = Semver(major: 1, minor: 2, patch: 3)
-                    let rhs = Semver(major: 1, minor: 2, patch: 0)
-                    expect(lhs != rhs).to(equal(true))
+                
+                context("patch等しくない場合") {
+                    it("falseを返す") {
+                        let lhs = Semver(major: 1, minor: 2, patch: 3)
+                        let rhs = Semver(major: 1, minor: 2, patch: 0)
+                        expect(lhs == rhs).to(equal(false))
+                    }
                 }
-
+            }
+            
+            describe("等価演算子(否定形)のテスト") {
+                context("等しい場合") {
+                    it("falseを返す") {
+                        let lhs = Semver(major: 1, minor: 2, patch: 3)
+                        let rhs = Semver(major: 1, minor: 2, patch: 3)
+                        expect(lhs != rhs).to(equal(false))
+                    }
+                }
+                
+                context("major等しくない場合") {
+                    it("trueを返す") {
+                        let lhs = Semver(major: 1, minor: 2, patch: 3)
+                        let rhs = Semver(major: 0, minor: 2, patch: 3)
+                        expect(lhs != rhs).to(equal(true))
+                    }
+                }
+                
+                context("minor等しくない場合") {
+                    it("trueを返す") {
+                        let lhs = Semver(major: 1, minor: 2, patch: 3)
+                        let rhs = Semver(major: 1, minor: 0, patch: 3)
+                        expect(lhs != rhs).to(equal(true))
+                    }
+                }
+                
+                context("patch等しくない場合") {
+                    it("trueを返す") {
+                        let lhs = Semver(major: 1, minor: 2, patch: 3)
+                        let rhs = Semver(major: 1, minor: 2, patch: 0)
+                        expect(lhs != rhs).to(equal(true))
+                    }
+                }
             }
             
             describe("大なりをテストする") {
@@ -162,7 +203,6 @@ class SemverTests: QuickSpec {
                 }
             }
         }
-            
     }
 }
 
