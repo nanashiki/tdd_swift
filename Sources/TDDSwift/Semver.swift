@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum SemverError: Error {
-    case validation
-}
-
 struct Semver: Equatable {
     let major: UInt
     let minor: UInt
