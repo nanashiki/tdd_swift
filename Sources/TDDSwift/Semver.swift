@@ -43,18 +43,6 @@ struct Semver: Equatable {
     }
     
     public static func > (lhs: Semver, rhs: Semver) -> Bool {
-        if lhs.major != rhs.major {
-            return lhs.major > rhs.major
-        }
-
-        if lhs.minor != rhs.minor {
-            return lhs.minor > rhs.minor
-        }
-
-        if lhs.patch != rhs.patch {
-            return lhs.patch > rhs.patch
-        }
-
-        return false
+        return lhs != rhs && !(lhs < rhs)
     }
 }
